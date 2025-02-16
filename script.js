@@ -1,22 +1,28 @@
 // Number Guessing Game project
 const numberGuessingGame = () => {
-    const randNum = Math.floor(Math.random() * 11)
+    const randNum = Math.floor(Math.random() * 10) + 1;
+    
     for (let i = 5; i > 0; i--) {
-        let userGuessNum = Number(prompt('Enter a number within 0 - 10: '))
-    if (userGuessNum > 0 && userGuessNum < 10) {
-        if (userGuessNum > randNum) {
+        let userGuess = prompt('Enter a number from 1 - 10: ')
+        let userNum = Number(userGuess)
+        
+    if (!userGuess || isNaN(userNum)) {
+        console.log('Invalid input! please enter a number')
+        
+    } else if (userNum > 0 && userNum < 11) {
+        if (userNum > randNum) {
             console.log('Your guess is too high ')
-        } else if (userGuessNum < randNum) {
+        } else if (userNum < randNum) {
             console.log('Your guess is too low')
         } else {
             console.log('Congrats! you guessed the correct number')
             return `Random number is ${randNum}`
         }
-    } else if (userGuessNum < 0 || userGuessNum > 11) {
-        console.log('Number is not within the range')
+        
     } else {
-        console.log('Invalid input! please enter a number')
+        console.log('Number is not within the range')
     }
+    
         if(i === 1) {
             console.log('Attempts exceeded')
             return `Random number is ${randNum}`
@@ -24,4 +30,4 @@ const numberGuessingGame = () => {
         console.log(`Attempts left ${i - 1}`)
 }
 };
-console.log(numberGuessingGame());
+numberGuessingGame();
